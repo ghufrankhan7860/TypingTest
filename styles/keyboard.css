@@ -1,0 +1,47 @@
+.keyboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    background: #e2e2e2;
+    border-radius: 10px;
+}
+
+.char-btn{
+    width: 65px;
+    height: 60px;
+    background: #565656;
+    text-align: center;
+    border: 2px solid rgb(49, 49, 49);
+    border-radius: 5px;
+    margin: 5px;
+    text-transform: uppercase;
+    font-family: 'poppins', Courier, monospace;
+    font-size: 1.5rem;
+    color: white;
+    padding: 10px;
+}
+
+/* 
+.char-btn:active{
+    background: #426d3d;
+} */
+
+.correct-key{
+    background: #426d3d;
+}
+.incorrect-key{
+    background: #6d3d3d;
+}
+
+
+.keyboard-row{
+    margin: 5px;
+}
+
+.space{
+    width:300px;
+    margin-bottom: 10px;
+}

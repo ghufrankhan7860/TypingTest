@@ -1,0 +1,1 @@
+{"mappings":"AAAA","sources":["styles/displayText.css"],"sourcesContent":[".display-text{\r\n    display: flex;\r\n    width: 800px;\r\n\r\n    flex-wrap: wrap;\r\n}"],"names":[],"version":3,"file":"TypingTestProj.d43a22fe.css.map","sourceRoot":"/__parcel_source_root/"}
