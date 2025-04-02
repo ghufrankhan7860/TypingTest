@@ -6,6 +6,8 @@ import TextContextProvider from '../contexts/textContextProvider';
 import LastKeyContextProvider from '../contexts/lastKeyContextProvider';
 import { TimerContextProvider } from '../contexts/timerContext';
 import Timer from './timer';
+import { ScoreContextProvider } from '../contexts/scoreContext';
+import Score from './score';
 
 
 const App = () => {
@@ -13,12 +15,15 @@ const App = () => {
         <>
             <TimerContextProvider>
                 <TextContextProvider>
-                    <LastKeyContextProvider>
-                        <Timer />
-                        <DisplayText />
-                        <KeyBoard />
+                    <ScoreContextProvider>
+                        <LastKeyContextProvider>
+                            <Timer />
+                            <Score />
+                            <DisplayText />
+                            <KeyBoard />
 
-                    </LastKeyContextProvider>
+                        </LastKeyContextProvider>
+                    </ScoreContextProvider>
                 </TextContextProvider>
             </TimerContextProvider>
         </>

@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import LastKeyContext from "./lastKeyContext";
 import TextContext from "./textContext";
 import { TimerContext } from "./timerContext";
+import { ScoreContext } from "./scoreContext";
+
 
 const LastKeyContextProvider = ({ children }) => {
     
@@ -12,6 +14,7 @@ const LastKeyContextProvider = ({ children }) => {
     const {text, setText} = useContext(TextContext);
     const {isRunning} = useContext(TimerContext);
 
+    const {score, setScore} = useContext(ScoreContext);
     useEffect(() => {
         const handleKeyDown = (e) => {
             setLastKey(e.key);   
@@ -28,11 +31,14 @@ const LastKeyContextProvider = ({ children }) => {
             if(e.key === text[0]){
                 setText(text.slice(1));
                 setIsCorrectKey(true);
-                console.log("Correct Key Pressed : "+e.key);
+                setScore(score + 1);
+
+                // console.log("Correct Key Pressed : "+e.key);
             }
             else{
                 setIsCorrectKey(false);
-                console.log("Wrong Key Pressed : "+e.key);
+                
+                // console.log("Wrong Key Pressed : "+e.key);
             }
         
         }
