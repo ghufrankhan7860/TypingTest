@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import LastKeyContext from "./lastKeyContext";
 import TextContext from "./textContext";
-
+import { TimerContext } from "./timerContext";
 
 const LastKeyContextProvider = ({ children }) => {
     
@@ -10,7 +10,8 @@ const LastKeyContextProvider = ({ children }) => {
     const [isCapsLockOn, setIsCapsLockOn] = useState(false);
     const [isCorrectKey, setIsCorrectKey] = useState(true);
     const {text, setText} = useContext(TextContext);
-    
+    const {isRunning} = useContext(TimerContext);
+
     useEffect(() => {
         const handleKeyDown = (e) => {
             setLastKey(e.key);   
@@ -42,14 +43,18 @@ const LastKeyContextProvider = ({ children }) => {
             }
         };
 
-        window.addEventListener('keydown', handleKeyDown);
-        window.addEventListener('keyup', handleKeyUp);
+        if(isRunning){
+            window.addEventListener('keydown', handleKeyDown);
+            window.addEventListener('keyup', handleKeyUp);
+        }
 
         return () => {
+            
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('keyup', handleKeyUp);
+            
         };
-    }, [text, setText,isCorrectKey]);
+    }, [text, setText,isCorrectKey, isRunning]);
     
     return (
         <LastKeyContext.Provider value={{lastKey, setLastKey, isShiftPressed, setIsShiftPressed, isCapsLockOn, setIsCapsLockOn, isCorrectKey, setIsCorrectKey}}>

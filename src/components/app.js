@@ -4,16 +4,23 @@ import DisplayText from './displayText';
 import KeyBoard from './keyboard';
 import TextContextProvider from '../contexts/textContextProvider';
 import LastKeyContextProvider from '../contexts/lastKeyContextProvider';
+import { TimerContextProvider } from '../contexts/timerContext';
+import Timer from './timer';
+
 
 const App = () => {
     return (
         <>
-            <TextContextProvider>
-                <LastKeyContextProvider>
-                    <DisplayText />
-                    <KeyBoard />
-                </LastKeyContextProvider>
-            </TextContextProvider>
+            <TimerContextProvider>
+                <TextContextProvider>
+                    <LastKeyContextProvider>
+                        <Timer />
+                        <DisplayText />
+                        <KeyBoard />
+
+                    </LastKeyContextProvider>
+                </TextContextProvider>
+            </TimerContextProvider>
         </>
     )
 }
