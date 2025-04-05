@@ -17,7 +17,18 @@ const DisplayText = ()=>{
     }
 
     return(
-        <pre className="display-text">
+        <pre className="display-text"
+            style={{
+                width: '800px',
+                height: '100px',
+                overflow: 'auto',
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                fontFamily: 'monospace',
+                whiteSpace: 'pre-wrap' // or 'pre' if you want horizontal scrolling
+            }}>
             <code>
                 {words}
             </code>
