@@ -17,9 +17,11 @@ const DisplayText = ()=>{
     }
 
     return(
-        <div className="display-text">
-            {words}
-        </div>
+        <pre className="display-text">
+            <code>
+                {words}
+            </code>
+        </pre>
     )
 
 }

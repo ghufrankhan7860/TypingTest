@@ -53,6 +53,7 @@ const Timer = () => {
             >
                 {isRunning ? 'Stop' : "Start"}
             </button>
+            <button> </button>
         </div>
     )
 }
