@@ -1,12 +1,13 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import { useContext } from 'react';
 import { TimerContext } from '../contexts/timerContext';
 
-const Timer = () =>{
+const Timer = () => {
     const {timeLeft, setTimeLeft, isRunning, setIsRunning} = useContext(TimerContext);
+    const buttonRef = useRef(null); // Create a ref for the button
     let interval = null;
 
-    useEffect(()=>{
+    useEffect(() => {
         if(isRunning && timeLeft > 0){
             interval = setInterval(() => {
                 setTimeLeft((timeLeft) => timeLeft - 1);
@@ -19,14 +20,19 @@ const Timer = () =>{
         if (timeLeft === 0) {
           setIsRunning(false);
         }
-      }, [timeLeft]);
+    }, [timeLeft]);
 
-    const handleClick = ()=>{
+    const handleClick = () => {
         if(isRunning){
             setIsRunning(false);
             clearInterval(interval);
         }else{
             setIsRunning(true);
+        }
+        
+        // Remove focus from the button after clicking
+        if (buttonRef.current) {
+            buttonRef.current.blur();
         }
     }
 
@@ -41,7 +47,12 @@ const Timer = () =>{
             <h2>Timer</h2>
             <p>{formatTime(timeLeft)}</p>
 
-            <button onClick={handleClick}>{(isRunning)?'Stop ':"Start"}</button>
+            <button 
+                ref={buttonRef} 
+                onClick={handleClick}
+            >
+                {isRunning ? 'Stop' : "Start"}
+            </button>
         </div>
     )
 }
