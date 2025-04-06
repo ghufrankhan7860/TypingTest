@@ -1,45 +1,63 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import LastKeyContext from "../contexts/lastKeyContext";
+import TextContext from "../contexts/textContext";
+import { ScoreContext } from "../contexts/scoreContext";
+import { TimerContext } from "../contexts/timerContext";
+import { wordChecker } from "../utils/helper";
 
 const KeyBoard = () => {
-    const keyChars = [['q','w','e','r','t','y','u','i','o','p'], ['a','s','d','f','g','h','j','k','l'],['z','x','c','v','b','n','m'], 'space'];
-    
-    const {lastKey, isCorrectKey} = useContext(LastKeyContext);
-    const getButtonClass = (btn)=>{
+    const keyChars = [['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'], ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'], ['z', 'x', 'c', 'v', 'b', 'n', 'm'], 'space'];
+
+    const [correctKey, setcorrectKey] = useState(null);
+
+    const { lastKey, setLastKey, isCorrectKey } = useContext(LastKeyContext);
+
+    const { text, setText } = useContext(TextContext);
+    const { isRunning } = useContext(TimerContext);
+    const { score, setScore } = useContext(ScoreContext);
+
+
+    const getButtonClass = (btn) => {
         let btnClass = 'char-btn';
 
-        if(btn === lastKey){
-            btnClass += isCorrectKey ? ' correct-key' : ' incorrect-key';
+        if (btn === lastKey) {
+            btnClass += (isCorrectKey || correctKey)? ' correct-key' : ' incorrect-key';
         }
-        if(btn === 'space'){
+        if (lastKey === ' ' && btn === 'space') {
+            btnClass +=  (isCorrectKey || correctKey) ? ' correct-key' : ' incorrect-key';
+        }
+        if (btn === 'space') {
             btnClass += ' space';
         }
 
         return btnClass;
     }
 
-    useEffect(() => {
-        
-    }, [lastKey, isCorrectKey]);
+    const handleClick = (btn) => {
 
-    return(
+        const check = wordChecker(btn, lastKey, setLastKey, text, setText, isRunning, score, setScore);
+        console.log(check + " Correct touch or not ? ");
+        setcorrectKey(check);
+    }
+
+    return (
         <div className='keyboard'>
             {
                 keyChars.map((row, index) => {
-                    if(row === 'space'){
+                    if (row === 'space') {
                         return (
-                            <button className='char-btn space' key={'space-row'+index}>
+                            <button className={getButtonClass(row)} key={'space-row' + index} onClick={()=>{handleClick(' ')}}>
                                 Space
                             </button>
                         )
                     }
 
-                    return(
-                        <div className='keyboard-row' key={'row'+index}>
+                    return (
+                        <div className='keyboard-row' key={'row' + index}>
                             {
-                                row.map((char, idx)=>{
-                                    return(
-                                        <button className={getButtonClass(char)} key={char+idx}>
+                                row.map((char, idx) => {
+                                    return (
+                                        <button className={getButtonClass(char)} key={char + idx} onClick={() => handleClick(char)}>
                                             {char}
                                         </button>
                                     )

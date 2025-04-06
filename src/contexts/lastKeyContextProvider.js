@@ -8,59 +8,62 @@ import { ScoreContext } from "./scoreContext";
 const LastKeyContextProvider = ({ children }) => {
     
     const [lastKey, setLastKey] = useState(null);
+
     const [isShiftPressed, setIsShiftPressed] = useState(false);
     const [isCapsLockOn, setIsCapsLockOn] = useState(false);
-    const [isCorrectKey, setIsCorrectKey] = useState(true);
+    const [isCorrectKey, setIsCorrectKey] = useState(null);
     const {text, setText} = useContext(TextContext);
     const {isRunning} = useContext(TimerContext);
 
     const {score, setScore} = useContext(ScoreContext);
     useEffect(() => {
         const handleKeyDown = (e) => {
-            setLastKey(e.key);   
-
+            setLastKey(e.key);
+            // console.log("Key Pressed : " + e.key);
+            // console.log(lastKey);
+    
             if (e.key === "Shift") {
                 setIsShiftPressed(true);
             }
             if (e.getModifierState("CapsLock")) {
                 setIsCapsLockOn(true);
-            }else{
+            } else {
                 setIsCapsLockOn(false);
             }
-
-            if(e.key === text[0]){
+    
+            if (e.key === text[0]) {
                 setText(text.slice(1));
                 setIsCorrectKey(true);
                 setScore(score + 1);
-
+    
                 // console.log("Correct Key Pressed : "+e.key);
             }
-            else{
+            else {
                 setIsCorrectKey(false);
-                
+    
                 // console.log("Wrong Key Pressed : "+e.key);
             }
-        
+    
         }
-
+    
         const handleKeyUp = (e) => {
             if (e.key === 'Shift') {
                 setIsShiftPressed(false);
             }
         };
-
-        if(isRunning){
+    
+        if (isRunning) {
             window.addEventListener('keydown', handleKeyDown);
             window.addEventListener('keyup', handleKeyUp);
         }
-
+    
         return () => {
-            
+    
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('keyup', handleKeyUp);
-            
+    
         };
-    }, [text, setText,isCorrectKey, isRunning]);
+    }, [text, setText, isCorrectKey, isRunning]);
     
     return (
         <LastKeyContext.Provider value={{lastKey, setLastKey, isShiftPressed, setIsShiftPressed, isCapsLockOn, setIsCapsLockOn, isCorrectKey, setIsCorrectKey}}>
