@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import TextContextProvider from "./contexts/TextContextProvider";
 import LastKeyContextProvider from "./contexts/LastKeyContextProvider";
 import TimerContextProvider from "./contexts/TimerContext";
-import ScoreContextProvider from "./contexts/scoreContext";
+import ScoreContextProvider from "./contexts/ScoreContext";
 
 // [#323437]
 
