@@ -1,4 +1,4 @@
-import TextContext from "./textContext";
+import TextContext from "./TextContext";
 import { useEffect, useState } from "react";
 import { wordAPI } from "../utils/config";
 import { hardCodedText } from "../utils/config";

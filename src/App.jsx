@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 
 import DisplayText from "./components/DisplayText";
 import KeyBoard from "./components/Keyboard";

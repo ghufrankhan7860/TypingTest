@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import LastKeyContext from "./lastKeyContext";
-import TextContext from "./textContext";
+import LastKeyContext from "./LastKeyContext";
+import TextContext from "./TextContext";
 import { TimerContext } from "./TimerContext";
-import { ScoreContext } from "./scoreContext";
+import { ScoreContext } from "./ScoreContext";
 
 const LastKeyContextProvider = ({ children }) => {
     const [lastKey, setLastKey] = useState(null);
