@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useContext } from "react";
 import { TimerContext } from "../contexts/TimerContext";
-import TextContext from "../contexts/textContext";
+import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
 import timeIcon from "../../public/assets/images/time.png";
 

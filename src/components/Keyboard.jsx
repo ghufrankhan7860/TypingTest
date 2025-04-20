@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import LastKeyContext from "../contexts/lastKeyContext";
-import TextContext from "../contexts/textContext";
-import { ScoreContext } from "../contexts/scoreContext";
+import LastKeyContext from "../contexts/LastKeyContext";
+import TextContext from "../contexts/TextContext";
+import { ScoreContext } from "../contexts/ScoreContext";
 import { TimerContext } from "../contexts/TimerContext";
 import { wordChecker } from "../utils/helper";
 

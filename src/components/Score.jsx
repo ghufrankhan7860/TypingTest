@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect, useRef } from "react";
-import { ScoreContext } from "../contexts/scoreContext";
+import { ScoreContext } from "../contexts/ScoreContext";
 import { TimerContext } from "../contexts/TimerContext";
 
 const Score = () => {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 
-import TextContext from "../contexts/textContext";
+import TextContext from "../contexts/TextContext";
 
 const DisplayText = () => {
     const [words, setWords] = useState("");
