@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+    --color-light-yellow: #fdfcdc;
+    --color-light-orange: #fed9b7;
+    --color-bittersweet: #f07167;
+
+    --color-custom-red-100: #ffede0;
+    --color-custom-red-150: #fdd3bf;
+    --color-custom-red-200: #ff9562;
+    --color-custom-red-300: #fe5503;
+    --color-custom-red-800: #3d1705;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.animate-blink {
+    animation: blink 1s infinite;
+}
