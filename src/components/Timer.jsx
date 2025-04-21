@@ -3,15 +3,29 @@ import { useContext } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
-import timeIcon from "../../public/assets/images/time.png";
+import timeIcon from "/assets/images/time.png";
+import { resetTimer } from "../utils/helper";
+import { ScoreContext } from "../contexts/ScoreContext";
+import LastKeyContext from "../contexts/LastKeyContext";
 
 const Timer = () => {
     // global variables
-    const { timeLeft, setTimeLeft, isRunning, setIsRunning } =
-        useContext(TimerContext);
+    const {
+        timeLeft,
+        setTimeLeft,
+        isRunning,
+        setIsRunning,
+        timeId,
+        setTimeId,
+    } = useContext(TimerContext);
+
+    const { setScore } = useContext(ScoreContext);
 
     // global variables
     const { text, setText, completeText } = useContext(TextContext);
+
+    // Add LastKeyContext
+    const { setLastKey } = useContext(LastKeyContext);
 
     const buttonRef = useRef(null); // Create a ref for the button
     const interval = useRef(null);
@@ -53,11 +67,13 @@ const Timer = () => {
             .padStart(2, "0")}`;
     };
 
-    const onBtnPress = (time) => {
+    const onBtnPress = (time, id) => {
         setTimeLeft(time);
         setIsRunning(false);
         clearInterval(interval.current);
         setText(completeText);
+        setTimeId(id);
+        // console.log(timeId);
     };
 
     return (
@@ -72,7 +88,9 @@ const Timer = () => {
                         {timeButtons.map((button) => (
                             <button
                                 key={button.time}
-                                onClick={() => onBtnPress(button.time)}
+                                onClick={() =>
+                                    onBtnPress(button.time, button.id)
+                                }
                                 className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800"
                             >
                                 {button.text}
@@ -88,17 +106,24 @@ const Timer = () => {
                     <button
                         ref={buttonRef}
                         onClick={handleClick}
-                        className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800"
+                        className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800 w-[70px]"
                     >
                         {isRunning ? "Stop " : "Start"}
                     </button>
                     <button
-                        onClick={() => {
-                            setTimeLeft(30);
-                            setIsRunning(false);
-                            clearInterval(interval.current);
-                            setText(completeText);
-                        }}
+                        onClick={() =>
+                            resetTimer(
+                                setTimeLeft,
+                                setIsRunning,
+                                setText,
+                                completeText,
+                                timeId,
+                                interval.current,
+                                setScore,
+                                setLastKey,
+                                null
+                            )
+                        }
                         className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800"
                     >
                         Reset

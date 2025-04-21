@@ -19,7 +19,9 @@ const DisplayText = () => {
         <div className="flex justify-center items-center h-48 relative">
             <pre className="h-auto w-auto overflow-hidden whitespace-pre-wrap">
                 <code className="text-2xl font-bold text-custom-red-300 font-mono font-medium relative">
-                    <span className="absolute animate-blink">|</span>
+                    <span className="absolute animate-blink text-bittersweet font-black">
+                        _
+                    </span>
                     <span className="relative left-1">{words}</span>
                 </code>
             </pre>
