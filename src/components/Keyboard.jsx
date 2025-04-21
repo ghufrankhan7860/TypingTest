@@ -34,9 +34,6 @@ const KeyBoard = () => {
                     ? " text-lg bg-green-200 text-green-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1"
                     : " text-lg bg-custom-red-300 text-custom-red-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1";
         }
-        if (btn === "space") {
-            btnClass += " space";
-        }
 
         return btnClass;
     };
