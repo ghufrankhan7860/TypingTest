@@ -3,7 +3,11 @@ import { useContext } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
+
 import timeIcon from "/assets/images/time.png";
+import punctuationIcon from "/assets/images/punctuation.png";
+import numberIcon from "/assets/images/numbers.png";
+
 import { resetTimer } from "../utils/helper";
 import { ScoreContext } from "../contexts/ScoreContext";
 import LastKeyContext from "../contexts/LastKeyContext";
@@ -76,10 +80,33 @@ const Timer = () => {
         // console.log(timeId);
     };
 
+    const getActiveBtn = (id) => {
+        return timeId === id ? "text-custom-red-300" : "";
+    };
+
     return (
         <>
             <div className="flex flex-col items-center justify-center">
+                {/* Punctuation  */}
                 <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1">
+                    <div className="flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800">
+                        @ punctuation
+                    </div>
+
+                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
+                        |
+                    </div>
+
+                    {/* Numbers  */}
+                    <div className="flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800">
+                        # numbers
+                    </div>
+
+                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
+                        |
+                    </div>
+
+                    {/* timer bar */}
                     <div className="flex flex-row items-center text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
                         <img src={timeIcon} alt="timer" className="w-6 h-6" />
                         time
@@ -91,7 +118,10 @@ const Timer = () => {
                                 onClick={() =>
                                     onBtnPress(button.time, button.id)
                                 }
-                                className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800"
+                                className={
+                                    "text-lg font-bold text-custom-red-200 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800 " +
+                                    getActiveBtn(button.id)
+                                }
                             >
                                 {button.text}
                             </button>

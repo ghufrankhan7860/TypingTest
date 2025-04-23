@@ -1,4 +1,10 @@
 import { timeButtons } from "./config";
+import {
+    simpleText,
+    punctuationText,
+    numbersText,
+    paragraphText,
+} from "./config";
 
 export const wordChecker = (
     btn,
@@ -41,4 +47,16 @@ export const resetTimer = (
     setScore(0);
     setLastKey(null);
     setCorrectKey(null);
+};
+
+export const getText = (text, isPunctuation, isNumbers) => {
+    if (isPunctuation && isNumbers) {
+        return paragraphText;
+    } else if (isPunctuation) {
+        return punctuationText;
+    } else if (isNumbers) {
+        return numbersText;
+    } else {
+        return simpleText;
+    }
 };

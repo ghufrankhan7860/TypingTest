@@ -1,12 +1,20 @@
 import TextContext from "./TextContext";
 import { useEffect, useState } from "react";
 import { wordAPI } from "../utils/config";
-import { hardCodedText } from "../utils/config";
+import {
+    simpleText,
+    punctuationText,
+    numbersText,
+    paragraphText,
+} from "../utils/config";
 
 const TextContextProvider = ({ children }) => {
     const [text, setText] = useState("");
     const [wordsLen, setWordsLen] = useState(0);
     const [completeText, setCompleteText] = useState("");
+    const [isPunctuation, setIsPunctuation] = useState(false);
+    const [isNumbers, setIsNumbers] = useState(false);
+
     const getText = async () => {
         const response = await fetch(wordAPI);
         const data = await response?.json();
@@ -18,13 +26,23 @@ const TextContextProvider = ({ children }) => {
     useEffect(() => {
         // getText();
 
-        setText(hardCodedText);
-        setCompleteText(hardCodedText);
-        setWordsLen(hardCodedText.length);
+        setText(simpleText);
+        setCompleteText(simpleText);
+        setWordsLen(simpleText.length);
     }, []);
 
     return (
-        <TextContext.Provider value={{ text, setText, completeText }}>
+        <TextContext.Provider
+            value={{
+                text,
+                setText,
+                completeText,
+                isPunctuation,
+                setIsPunctuation,
+                isNumbers,
+                setIsNumbers,
+            }}
+        >
             {children}
         </TextContext.Provider>
     );

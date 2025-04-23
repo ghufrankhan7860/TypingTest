@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
-
+import { getText } from "../utils/helper";
 import TextContext from "../contexts/TextContext";
 
 const DisplayText = () => {
     const [words, setWords] = useState("");
     const [wordsArray, setWordsArray] = useState([]);
 
-    const { text } = useContext(TextContext);
+    const { text, isPunctuation, isNumbers, setIsPunctuation, setIsNumbers } =
+        useContext(TextContext);
+
     useEffect(() => {
-        setWords(text);
+        setWords(getText(text, isPunctuation, isNumbers));
         setWordsArray(text.split(" "));
     }, [text]);
 
