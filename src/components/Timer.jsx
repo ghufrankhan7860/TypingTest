@@ -5,8 +5,7 @@ import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
 
 import timeIcon from "/assets/images/time.png";
-import punctuationIcon from "/assets/images/punctuation.png";
-import numberIcon from "/assets/images/numbers.png";
+
 
 import { resetTimer } from "../utils/helper";
 import { ScoreContext } from "../contexts/ScoreContext";
