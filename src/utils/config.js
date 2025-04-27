@@ -11,16 +11,16 @@ A stream ran beside the trail, bubbling over smooth stones. Its steady rhythm bl
 
 People began to stir. Windows opened. Coffee brewed. The smell of breakfast drifted down the lanes of a quiet village waking from sleep. Children laced their shoes, ready for school. Adults packed lunches, read the news, and prepared for the day ahead.
 
-Despite the growing movement, there was a calm—a sense that everything was unfolding as it should. A man sat on a bench near the park, notebook in hand. He wrote slowly, watching the world without urgency. Across from him, a young girl walked her dog, laughing as it tugged at the leash.
+Despite the growing movement, there was a calm-a sense that everything was unfolding as it should. A man sat on a bench near the park, notebook in hand. He wrote slowly, watching the world without urgency. Across from him, a young girl walked her dog, laughing as it tugged at the leash.
 
-These were simple moments, yet full of meaning. They reminded us that the most beautiful parts of life are often the quietest. The rustle of leaves, the laughter of a child, the warmth of sunlight through a window—all small, perfect pieces of a larger story.
+These were simple moments, yet full of meaning. They reminded us that the most beautiful parts of life are often the quietest. The rustle of leaves, the laughter of a child, the warmth of sunlight through a window-all small, perfect pieces of a larger story.
 
-And so, the day moved forward—not with a rush or a roar, but with gentle persistence, like the turning of the earth itself. A new chapter began, written in the language of life.`;
+And so, the day moved forward-not with a rush or a roar, but with gentle persistence, like the turning of the earth itself. A new chapter began, written in the language of life.`;
 
 export const numbersText =
     "in the year 2025 a small town began its day at exactly 615 am the sun rose casting light on rooftops trees and quiet roads the temperature was 18 degrees celsius as the morning air filled with the sounds of 12 birds singing in harmony one man walked for 3 kilometers each day taking 45 minutes to complete his route he paused every 15 minutes to stretch and breathe deeply along the way he passed 5 houses 2 playgrounds and 1 small library on the corner of 8th street and 2nd avenue a child played with a dog laughing every 10 seconds as it ran in circles nearby 4 cars drove slowly down the road each traveling under the 30 kilometer per hour speed limit at 730 am a group of 7 students boarded bus number 22 heading toward school the bus stopped 3 times before reaching the main campus by 745 am by 800 am traffic increased as 50 more vehicles appeared on the streets the baker on main street had prepared 100 loaves of bread by 900 am selling 60 of them in just 1 hour his goal was to reach 120 sales before noon and take a 30 minute break before reopening at 1 pm back in the park 2 joggers stretched near the fountain while 6 ducks swam in circles around a floating leaf it was the 1st day of spring a reminder of fresh starts and small joys as the clock ticked toward 10 am people moved through their routines some planning for the weekend others counting down 4 days until a holiday with 3 extra hours to rest and spend time with family for many the morning held just enough time and just enough peace to feel 100 percent ready for the day ahead";
 
-export const paragraphText = `On April 1st, 2025, at exactly 6:15 a.m., the town of Elmsworth began to wake up. The sun, rising slowly, cast golden light across rooftops and trees. By 6:30 a.m., birds could be heard singing—twelve of them perched across five trees. The temperature was 18°C, perfect for an early jog or a quiet walk through the park.
+export const paragraphText = `On April 1st, 2025, at exactly 6:15 a.m., the town of Elmsworth began to wake up. The sun, rising slowly, cast golden light across rooftops and trees. By 6:30 a.m., birds could be heard singing-twelve of them perched across five trees. The temperature was 18°C, perfect for an early jog or a quiet walk through the park.
 
 At 6:45 a.m., Mr. Collins left his house for his usual 3.2-mile walk. Every fifteen minutes, he paused to stretch or check his step count. He passed two playgrounds, one library, and four bakeries. At 7:30 a.m., a bus marked “Route 22” picked up seven children heading to school. It stopped three more times before arriving at 7:50 a.m.
 
@@ -30,9 +30,9 @@ By 8:30 a.m., 52 cars had passed down Main Street. Traffic remained light, with 
 
 At 9:00 a.m., two joggers stretched near the park fountain, while six ducks paddled calmly around a floating branch. A father and daughter counted them out loud, laughing as the ducks formed a perfect line.
 
-As the clock struck 10:00 a.m., the town had settled into its daily rhythm—work, school, errands, and a few stolen moments of peace. Though the numbers varied, the pattern remained: time moved forward, tasks were completed, and small joys made the difference.
+As the clock struck 10:00 a.m., the town had settled into its daily rhythm-work, school, errands, and a few stolen moments of peace. Though the numbers varied, the pattern remained: time moved forward, tasks were completed, and small joys made the difference.
 
-And with every tick of the clock, a new moment was written—simple, counted, cherished.`;
+And with every tick of the clock, a new moment was written-simple, counted, cherished.`;
 
 export const timeButtons = [
     { time: 30, text: "30s", id: 0 },
