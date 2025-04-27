@@ -11,9 +11,10 @@ const DisplayText = () => {
         useContext(TextContext);
 
     useEffect(() => {
-        setWords(getText(text, isPunctuation, isNumbers));
-        setWordsArray(text.split(" "));
-    }, [text]);
+        const tempText = getText(isPunctuation, isNumbers);
+        setWords(tempText);
+        setWordsArray(tempText.split(" "));
+    }, [text, isPunctuation, isNumbers]);
 
     if (words.length === 0) {
         return <p>Loading...</p>;

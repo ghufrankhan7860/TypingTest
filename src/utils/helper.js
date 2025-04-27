@@ -49,7 +49,7 @@ export const resetTimer = (
     setCorrectKey(null);
 };
 
-export const getText = (text, isPunctuation, isNumbers) => {
+export const getText = (isPunctuation, isNumbers) => {
     if (isPunctuation && isNumbers) {
         return paragraphText;
     } else if (isPunctuation) {

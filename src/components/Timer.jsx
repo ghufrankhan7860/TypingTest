@@ -26,7 +26,15 @@ const Timer = () => {
     const { setScore } = useContext(ScoreContext);
 
     // global variables
-    const { text, setText, completeText } = useContext(TextContext);
+    const {
+        text,
+        setText,
+        completeText,
+        isPunctuation,
+        isNumbers,
+        setIsPunctuation,
+        setIsNumbers,
+    } = useContext(TextContext);
 
     // Add LastKeyContext
     const { setLastKey } = useContext(LastKeyContext);
@@ -77,11 +85,17 @@ const Timer = () => {
         clearInterval(interval.current);
         setText(completeText);
         setTimeId(id);
-        // console.log(timeId);
+        setScore(0);
+        setLastKey(null);
+        setCorrectKey(null);
     };
 
     const getActiveBtn = (id) => {
         return timeId === id ? "text-custom-red-300" : "";
+    };
+
+    const getActivBtnClass = (btn) => {
+        return btn ? "text-custom-red-300" : "";
     };
 
     return (
@@ -89,18 +103,32 @@ const Timer = () => {
             <div className="flex flex-col items-center justify-center">
                 {/* Punctuation  */}
                 <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1">
-                    <div className="flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800">
+                    <button
+                        className={
+                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
+                            getActivBtnClass(isPunctuation)
+                        }
+                        onClick={() => setIsPunctuation(!isPunctuation)}
+                    >
                         @ punctuation
-                    </div>
+                    </button>
 
                     <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
                         |
                     </div>
 
                     {/* Numbers  */}
-                    <div className="flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800">
+                    <button
+                        className={
+                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
+                            getActivBtnClass(isNumbers)
+                        }
+                        onClick={() => {
+                            setIsNumbers(!isNumbers);
+                        }}
+                    >
                         # numbers
-                    </div>
+                    </button>
 
                     <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
                         |

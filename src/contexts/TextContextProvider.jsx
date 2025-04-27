@@ -1,12 +1,7 @@
 import TextContext from "./TextContext";
 import { useEffect, useState } from "react";
 import { wordAPI } from "../utils/config";
-import {
-    simpleText,
-    punctuationText,
-    numbersText,
-    paragraphText,
-} from "../utils/config";
+import { getText } from "../utils/helper";
 
 const TextContextProvider = ({ children }) => {
     const [text, setText] = useState("");
@@ -15,21 +10,20 @@ const TextContextProvider = ({ children }) => {
     const [isPunctuation, setIsPunctuation] = useState(false);
     const [isNumbers, setIsNumbers] = useState(false);
 
-    const getText = async () => {
-        const response = await fetch(wordAPI);
-        const data = await response?.json();
-        const joinedData = data.slice(0, wordsLen).join(" ");
-        setText(joinedData);
-        setCompleteText(joinedData);
-    };
+    // const getText = async () => {
+    //     const response = await fetch(wordAPI);
+    //     const data = await response?.json();
+    //     const joinedData = data.slice(0, wordsLen).join(" ");
+    //     setText(joinedData);
+    //     setCompleteText(joinedData);
+    // };
 
     useEffect(() => {
-        // getText();
-
-        setText(simpleText);
-        setCompleteText(simpleText);
-        setWordsLen(simpleText.length);
-    }, []);
+        const tempText = getText(isPunctuation, isNumbers);
+        setText(tempText);
+        setCompleteText(tempText);
+        setWordsLen(tempText.length);
+    }, [isPunctuation, isNumbers]);
 
     return (
         <TextContext.Provider
