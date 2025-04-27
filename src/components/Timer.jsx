@@ -108,7 +108,16 @@ const Timer = () => {
                             "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
                             getActivBtnClass(isPunctuation)
                         }
-                        onClick={() => setIsPunctuation(!isPunctuation)}
+                        onClick={() => {
+                            setIsPunctuation(!isPunctuation);
+                            resetTimer(
+                                setTimeLeft,
+                                setIsRunning,
+                                setText,
+                                completeText,
+                                timeId
+                            );
+                        }}
                     >
                         @ punctuation
                     </button>
@@ -125,6 +134,13 @@ const Timer = () => {
                         }
                         onClick={() => {
                             setIsNumbers(!isNumbers);
+                            resetTimer(
+                                setTimeLeft,
+                                setIsRunning,
+                                setText,
+                                completeText,
+                                timeId
+                            );
                         }}
                     >
                         # numbers

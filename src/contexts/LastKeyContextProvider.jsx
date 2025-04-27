@@ -16,9 +16,10 @@ const LastKeyContextProvider = ({ children }) => {
     const { score, setScore } = useContext(ScoreContext);
     useEffect(() => {
         const handleKeyDown = (e) => {
+            console.log(text);
             setLastKey(e.key);
-            // console.log("Key Pressed : " + e.key);
-            // console.log(lastKey);
+            console.log("Key Pressed : " + e.key);
+            console.log(lastKey);
 
             if (e.key === "Shift") {
                 setIsShiftPressed(true);
