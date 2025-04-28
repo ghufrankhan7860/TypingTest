@@ -1,22 +1,23 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
-import { getText } from "../utils/helper";
 import TextContext from "../contexts/TextContext";
 
 const DisplayText = () => {
-    const [words, setWords] = useState("");
     const [wordsArray, setWordsArray] = useState([]);
 
     const { text, isPunctuation, isNumbers, setIsPunctuation, setIsNumbers } =
         useContext(TextContext);
 
     useEffect(() => {
-        setWords(text);
         setWordsArray(text.split(" "));
     }, [text, isPunctuation, isNumbers]);
 
-    if (words.length === 0) {
-        return <p>Loading...</p>;
+    if (wordsArray.length === 0) {
+        return (
+            <div className=" flex flex-col justify-center items-center text-3xl font-light p-2 m-2 bg-custom-red-100 h-44 w-6xl rounded-lg">
+                <div className="w-full h-30 bg-custom-red-150 rounded-xl animate-pulse"></div>
+            </div>
+        );
     }
 
     return (

@@ -6,7 +6,6 @@ import { timeButtons } from "../utils/config";
 
 import timeIcon from "/assets/images/time.png";
 
-
 import { resetTimer } from "../utils/helper";
 import { ScoreContext } from "../contexts/ScoreContext";
 import LastKeyContext from "../contexts/LastKeyContext";
@@ -36,7 +35,7 @@ const Timer = () => {
     } = useContext(TextContext);
 
     // Add LastKeyContext
-    const { setLastKey } = useContext(LastKeyContext);
+    const { setLastKey, setIsCorrectKey } = useContext(LastKeyContext);
 
     const buttonRef = useRef(null); // Create a ref for the button
     const interval = useRef(null);
@@ -86,7 +85,7 @@ const Timer = () => {
         setTimeId(id);
         setScore(0);
         setLastKey(null);
-        setCorrectKey(null);
+        setIsCorrectKey(null);
     };
 
     const getActiveBtn = (id) => {
@@ -114,7 +113,11 @@ const Timer = () => {
                                 setIsRunning,
                                 setText,
                                 completeText,
-                                timeId
+                                timeId,
+                                interval,
+                                setScore,
+                                setLastKey,
+                                setIsCorrectKey
                             );
                         }}
                     >
@@ -138,7 +141,11 @@ const Timer = () => {
                                 setIsRunning,
                                 setText,
                                 completeText,
-                                timeId
+                                timeId,
+                                interval,
+                                setScore,
+                                setLastKey,
+                                setIsCorrectKey
                             );
                         }}
                     >

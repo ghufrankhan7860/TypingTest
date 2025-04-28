@@ -49,14 +49,24 @@ export const resetTimer = (
     setCorrectKey(null);
 };
 
+const getDisplayText = (text) => {
+    const textArray = text.split(" ");
+    let randomIdx = Math.floor(Math.random() * (textArray.length - 1));
+    if (randomIdx < 0) {
+        randomIdx = 0;
+    }
+    const displayText = textArray.slice(randomIdx, randomIdx + 300).join(" ");
+    return displayText;
+};
+
 export const getText = (isPunctuation, isNumbers) => {
     if (isPunctuation && isNumbers) {
-        return paragraphText;
+        return getDisplayText(paragraphText);
     } else if (isPunctuation) {
-        return punctuationText;
+        return getDisplayText(punctuationText);
     } else if (isNumbers) {
-        return numbersText;
+        return getDisplayText(numbersText);
     } else {
-        return simpleText;
+        return getDisplayText(simpleText);
     }
 };
