@@ -21,13 +21,13 @@ const DisplayText = () => {
     }
 
     return (
-        <div className="flex justify-center items-center h-48 relative">
-            <pre className="h-auto w-auto overflow-hidden whitespace-pre-wrap">
-                <code className="text-4xl font-bold text-custom-red-300 font-mono font-medium relative">
+        <div className="flex justify-center items-center h-32 sm:h-36 md:h-40 lg:h-48 relative w-full">
+            <pre className="h-auto w-full overflow-hidden whitespace-pre-wrap px-2">
+                <code className="text-2xl sm:text-3xl md:text-4xl font-bold text-custom-red-300 font-mono font-medium relative [@media(max-height:640px)]:text-4xl">
                     <span className="absolute animate-blink text-bittersweet font-black">
                         _
                     </span>
-                    <span className="relative overflow-hidden max-w-6xl inline-block truncate">
+                    <span className="relative overflow-hidden w-full inline-block truncate">
                         {wordsArray.map((word, index) => (
                             <span key={index}>
                                 <span>{word}</span>

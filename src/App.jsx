@@ -15,7 +15,7 @@ import ScoreContextProvider from "./contexts/ScoreContext";
 
 const App = () => {
     return (
-        <div className="flex flex-col flex-wrap items-center h-screen bg-custom-red-100 px-20 ">
+        <div className="flex flex-col flex-wrap items-center h-screen bg-custom-red-100 px-4 sm:px-8 md:px-12 lg:px-20">
             <TimerContextProvider>
                 <TextContextProvider>
                     <ScoreContextProvider>
