@@ -21,9 +21,9 @@ const DisplayText = () => {
     }
 
     return (
-        <div className="flex justify-center items-center h-32 sm:h-36 md:h-40 lg:h-48 relative w-full">
+        <div className="flex justify-center items-center h-32 sm:h-36 md:h-40 lg:h-48 relative w-full [@media(max-width:700px)]:h-36 ">
             <pre className="h-auto w-full overflow-hidden whitespace-pre-wrap px-2">
-                <code className="text-2xl sm:text-3xl md:text-4xl font-bold text-custom-red-300 font-mono font-medium relative [@media(max-height:640px)]:text-4xl">
+                <code className="text-2xl sm:text-3xl md:text-4xl font-bold text-custom-red-300 font-mono font-medium relative [@media(max-height:640px)]:text-4xl [@media(max-width:700px)]:text-3xl">
                     <span className="absolute animate-blink text-bittersweet font-black">
                         _
                     </span>

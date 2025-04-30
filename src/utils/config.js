@@ -21,6 +21,6 @@ export const timeButtons = [
 export const keyChars = [
     ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
     ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-    ["shift", "z", "x", "c", "v", "b", "n", "m"],
+    ["z", "x", "c", "v", "b", "n", "m"],
     "space",
 ];

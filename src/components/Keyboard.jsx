@@ -54,14 +54,14 @@ const KeyBoard = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center border-1  border-custom-red-200 rounded-sm p-1 [@media(max-height:680px)]:hidden">
+        <div className="flex flex-col justify-center items-center border-1  border-custom-red-200 rounded-sm [@media(max-height:680px)]:hidden  [@media(max-width:700px)]:h-64 [@media(max-width:700px)]:w-full ">
             {keyChars.map((row, index) => {
                 if (row == "space") {
                     return (
                         <button
                             className={
                                 getButtonClass(row) +
-                                "text-lg font-bold px-10 py-1 bg-white text-bittersweet rounded-sm hover:text-custom-red-800 hover:border-0 m-1"
+                                "text-lg font-bold px-10 py-1 bg-white text-bittersweet rounded-sm hover:text-custom-red-800 hover:border-0 m-1 [@media(max-width:700px)]:px-20 [@media(max-width:700px)]:py-1"
                             }
                             key={"space-row" + index}
                             onClick={() => {
@@ -74,13 +74,16 @@ const KeyBoard = () => {
                 }
 
                 return (
-                    <div className="" key={"row" + index}>
+                    <div
+                        className="flex flex-row flex-wrap justify-center"
+                        key={"row" + index}
+                    >
                         {row.map((char, idx) => {
                             return (
                                 <button
                                     className={
                                         getButtonClass(char) +
-                                        "text-lg font-bold px-3 py-1 bg-custom-red-200 text-custom-red-100 rounded-sm hover:text-custom-red-800 hover:border-0 m-1"
+                                        "text-lg font-bold px-3 py-1 bg-custom-red-200 text-custom-red-100 rounded-sm hover:text-custom-red-800 hover:border-0 m-1 [@media(max-width:700px)]:text-md [@media(max-width:700px)]:px-[11px] [@media(max-width:700px)]:py-2.5 [@media(max-width:700px)]:mx-0.5 [@media(max-width:700px)]:my-2"
                                     }
                                     key={char + idx}
                                     onClick={() => handleClick(char)}

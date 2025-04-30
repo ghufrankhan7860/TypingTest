@@ -6,7 +6,7 @@ const Navbar = () => {
     const { setText, isPunctuation, isNumbers, setCompleteText, setWordsLen } =
         useContext(TextContext);
     return (
-        <div className="flex justify-start w-full text-2xl md:text-4xl py-3 sm:py-4 md:py-5 text-custom-red-600 font-[montserrat] font-medium lowercase rounded-xl sm:text-lg">
+        <div className="flex justify-start w-full text-2xl md:text-4xl py-3 sm:py-4 md:py-5 text-custom-red-600 font-[montserrat] font-medium lowercase rounded-xl [@media(max-width:700px)]:text-xl">
             <button
                 className="cursor-pointer"
                 onClick={() => {
