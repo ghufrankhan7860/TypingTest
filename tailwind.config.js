@@ -2,11 +2,7 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {
-            fontFamily: {
-                body: ["Moderna-Sans", "sans-serif"],
-            },
-        },
+        extend: {},
     },
     plugins: [require("@tailwindcss/line-clamp")],
 };

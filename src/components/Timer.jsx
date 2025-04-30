@@ -100,7 +100,7 @@ const Timer = () => {
         <>
             <div className="flex flex-col items-center justify-center">
                 {/* Punctuation  */}
-                <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1">
+                <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1 sm:text-s[@media(max-width:768px)]:flex-col [@media(max-width:768px)]:gap-1 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:py-2">
                     <button
                         className={
                             "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
