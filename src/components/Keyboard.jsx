@@ -54,7 +54,7 @@ const KeyBoard = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center border-1  border-custom-red-200 rounded-sm [@media(max-height:680px)]:hidden  [@media(max-width:700px)]:h-64 [@media(max-width:700px)]:w-full ">
+        <div className="flex flex-col justify-center items-center border-1 border-custom-red-200 rounded-sm [@media(max-height:680px)]:hidden  [@media(max-width:700px)]:h-64 [@media(max-width:700px)]:w-full [@media(min-width:700px)]:p-3">
             {keyChars.map((row, index) => {
                 if (row == "space") {
                     return (
