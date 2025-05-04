@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
@@ -9,8 +8,11 @@ import timeIcon from "/assets/images/time.png";
 import { resetTimer } from "../utils/helper";
 import { ScoreContext } from "../contexts/ScoreContext";
 import LastKeyContext from "../contexts/LastKeyContext";
+import CustomInput from "./CustomInput";
 
 const Timer = () => {
+    const [isCustomVisible, setIsCustomVisible] = useState(false);
+
     // global variables
     const {
         timeLeft,
@@ -32,6 +34,8 @@ const Timer = () => {
         isNumbers,
         setIsPunctuation,
         setIsNumbers,
+        isCustomText,
+        setIsCustomText,
     } = useContext(TextContext);
 
     // Add LastKeyContext
@@ -96,8 +100,17 @@ const Timer = () => {
         return btn ? "text-custom-red-300" : "";
     };
 
+    const handleCustomInputClick = () => {
+        setIsCustomVisible(true);
+    };
+
     return (
         <>
+            {console.log("Re-rendered" + isCustomText)}
+            {isCustomVisible && (
+                <CustomInput setIsCustomVisible={setIsCustomVisible} />
+            )}
+            {console.log(isCustomText)}
             <div className="flex flex-col items-center justify-center">
                 {/* Punctuation  */}
                 <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1 sm:text-s[@media(max-width:768px)]:flex-col [@media(max-width:768px)]:gap-1 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:py-2">
@@ -108,6 +121,8 @@ const Timer = () => {
                         }
                         onClick={() => {
                             setIsPunctuation(!isPunctuation);
+                            setIsCustomText(false);
+
                             resetTimer(
                                 setTimeLeft,
                                 setIsRunning,
@@ -136,6 +151,7 @@ const Timer = () => {
                         }
                         onClick={() => {
                             setIsNumbers(!isNumbers);
+                            setIsCustomText(false);
                             resetTimer(
                                 setTimeLeft,
                                 setIsRunning,
@@ -152,6 +168,20 @@ const Timer = () => {
                         # numbers
                     </button>
 
+                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
+                        |
+                    </div>
+
+                    {/* Custom-input */}
+                    <button
+                        className={
+                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
+                            getActivBtnClass(isCustomText)
+                        }
+                        onClick={handleCustomInputClick}
+                    >
+                        custom-input
+                    </button>
                     <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
                         |
                     </div>

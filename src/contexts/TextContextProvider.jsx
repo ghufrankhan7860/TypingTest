@@ -1,6 +1,6 @@
 import TextContext from "./TextContext";
 import { useEffect, useState } from "react";
-import { wordAPI } from "../utils/config";
+
 import { getText } from "../utils/helper";
 
 const TextContextProvider = ({ children }) => {
@@ -9,6 +9,7 @@ const TextContextProvider = ({ children }) => {
     const [completeText, setCompleteText] = useState("");
     const [isPunctuation, setIsPunctuation] = useState(false);
     const [isNumbers, setIsNumbers] = useState(false);
+    const [isCustomText, setIsCustomText] = useState(false);
 
     useEffect(() => {
         const tempText = getText(isPunctuation, isNumbers);
@@ -30,6 +31,8 @@ const TextContextProvider = ({ children }) => {
                 setIsPunctuation,
                 isNumbers,
                 setIsNumbers,
+                isCustomText,
+                setIsCustomText,
             }}
         >
             {children}

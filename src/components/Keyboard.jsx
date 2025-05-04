@@ -49,7 +49,7 @@ const KeyBoard = () => {
             score,
             setScore
         );
-        // console.log(check + " Correct touch or not ? ");
+
         setcorrectKey(check);
     };
 

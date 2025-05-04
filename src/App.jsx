@@ -23,6 +23,7 @@ const App = () => {
                             <Navbar />
                             <Timer />
                             <Score />
+
                             <DisplayText />
                             <KeyBoard />
                         </LastKeyContextProvider>
