@@ -32,8 +32,10 @@ const Navbar = () => {
             </button>
 
             <button
-                onClick={() => {
+                onClick={(e) => {
                     toggleTheme();
+                    e.currentTarget.blur();
+                    
                 }}
                 className="relative group"
             >
