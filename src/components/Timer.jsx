@@ -2,9 +2,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
-
 import { CiTimer } from "react-icons/ci";
-import timeIcon from "/assets/images/time.png";
 
 import { resetTimer } from "../utils/helper";
 import { ScoreContext } from "../contexts/ScoreContext";
@@ -115,7 +113,7 @@ const Timer = () => {
             {isCustomVisible && (
                 <CustomInput setIsCustomVisible={setIsCustomVisible} />
             )}
-            {console.log(isCustomText)}
+            {/* {console.log(isCustomText)} */}
             <div className="flex flex-col items-center justify-center">
                 {/* Punctuation  */}
                 <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1 sm:text-s[@media(max-width:768px)]:flex-col [@media(max-width:768px)]:gap-1 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:py-2 dark:bg-neutral-700 light:bg-neutral-200">
@@ -233,10 +231,10 @@ const Timer = () => {
                                 setText,
                                 completeText,
                                 timeId,
-                                interval.current,
+                                interval,
                                 setScore,
                                 setLastKey,
-                                null
+                                setIsCorrectKey
                             )
                         }
                         className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-600 w-[70px] dark:text-neutral-500 light:text-neutral-400 hover:light:bg-neutral-400 hover:light:text-neutral-800 hover:dark:bg-neutral-50 hover:dark:text-neutral-700"

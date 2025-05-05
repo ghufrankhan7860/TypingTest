@@ -14,14 +14,8 @@ const KeyBoard = () => {
     const { isRunning } = useContext(TimerContext);
     const { score, setScore } = useContext(ScoreContext);
 
-    const correct =
-        " text-lg bg-green-200 text-green-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1 light:bg-green-200 dark:bg-green-200 dark:text-green-800";
-
-    const incorrect =
-        " text-lg bg-custom-red-300 text-custom-red-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1";
-
     const crcctkey =
-        "bg-green-300 dark:bg-green-500 light:bg-green-500 text-green-800";
+        "bg-green-300 dark:bg-green-500 dark:text-green-800 light:bg-green-200 text-green-800";
     const incrtkey =
         "bg-red-300 dark:bg-red-200 dark:text-red-800 light:bg-red-200 text-red-800";
 
@@ -30,8 +24,6 @@ const KeyBoard = () => {
 
         if (btn === lastKey) {
             btnClass += isCorrectKey ? crcctkey : incrtkey;
-            console.log("lastKey", lastKey);
-            console.log("isCorrectKey", isCorrectKey);
         }
         if (lastKey === " " && btn === "space") {
             btnClass += isCorrectKey ? crcctkey : incrtkey;
@@ -55,6 +47,7 @@ const KeyBoard = () => {
     };
 
     return (
+        // console.log("lastKey", lastKey),
         <div className="flex flex-col justify-center items-center border-1 border-custom-red-200 rounded-sm [@media(max-height:680px)]:hidden  [@media(max-width:700px)]:h-64 [@media(max-width:700px)]:w-full [@media(min-width:700px)]:p-3 dark:border-neutral-50 light:border-neutral-600">
             {keyChars.map((row, index) => {
                 if (row == "space") {

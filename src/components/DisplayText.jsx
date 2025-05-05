@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import TextContext from "../contexts/TextContext";
+import { TimerContext } from "../contexts/TimerContext";
 
 const DisplayText = () => {
     const [wordsArray, setWordsArray] = useState([]);
@@ -8,9 +9,18 @@ const DisplayText = () => {
     const { text, isPunctuation, isNumbers, setIsPunctuation, setIsNumbers } =
         useContext(TextContext);
 
+    const { setIsRunning } = useContext(TimerContext);
+
     useEffect(() => {
-        setWordsArray(text.split(" "));
+        setWordsArray(text.split(/\s+/));
     }, [text, isPunctuation, isNumbers]);
+
+    // tracks the array and stops the timer when the array is empty
+    useEffect(() => {
+        if (wordsArray.length === 1 && wordsArray[0] === "") {
+            setIsRunning(false);
+        }
+    }, [wordsArray]);
 
     if (wordsArray.length === 0) {
         return (
@@ -28,9 +38,11 @@ const DisplayText = () => {
                         _
                     </span>
                     <span className="relative overflow-hidden w-full inline-block truncate  dark:text-neutral-50 light:text-neutral-600 ">
+                        
                         {wordsArray.map((word, index) => (
                             <span key={index}>
                                 <span>{word}</span>
+
                                 <span className="opacity-20">
                                     {index < wordsArray.length - 1 && "_"}
                                 </span>

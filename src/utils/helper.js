@@ -38,7 +38,7 @@ export const resetTimer = (
     interval,
     setScore,
     setLastKey,
-    setCorrectKey
+    setIsCorrectKey
 ) => {
     setTimeLeft(timeButtons[timeId].time);
     setIsRunning(false);
@@ -46,7 +46,7 @@ export const resetTimer = (
     setText(completeText);
     setScore(0);
     setLastKey(null);
-    setCorrectKey(null);
+    setIsCorrectKey(null);
 };
 
 const getDisplayText = (text) => {

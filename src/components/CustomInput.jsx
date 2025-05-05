@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
 import TextContext from "../contexts/TextContext";
+import CustomTextContext from "../contexts/CustomTextContext";
 
 const CustomInput = ({ setIsCustomVisible }) => {
-    const [customText, setCustomText] = useState("");
+    const { customText, setCustomText } = useContext(CustomTextContext);
 
     const {
         setText,

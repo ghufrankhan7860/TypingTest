@@ -16,10 +16,13 @@ const LastKeyContextProvider = ({ children }) => {
     const { score, setScore } = useContext(ScoreContext);
     useEffect(() => {
         const handleKeyDown = (e) => {
-            // console.log(text);
-            setLastKey(e.key);
-            // console.log("Key Pressed : " + e.key);
-            // console.log(lastKey);
+
+            if (e.key === "Enter") {
+                setLastKey("Enter");
+            } else {
+                setLastKey(e.key);
+            }
+
 
             if (e.key === "Shift") {
                 setIsShiftPressed(true);
@@ -29,17 +32,21 @@ const LastKeyContextProvider = ({ children }) => {
             } else {
                 setIsCapsLockOn(false);
             }
-
-            if (e.key === text[0]) {
+            if (e.key === "Backspace") {
+                setText(text.slice(0, -1));
+                return;
+            }
+            if ((e.key === "Enter" && text[0] === "\n") || e.key === text[0]) {
+                
                 setText(text.slice(1));
                 setIsCorrectKey(true);
                 setScore(score + 1);
 
-                // console.log("Correct Key Pressed : "+e.key);
+
             } else {
                 setIsCorrectKey(false);
 
-                // console.log("Wrong Key Pressed : "+e.key);
+                
             }
         };
 
