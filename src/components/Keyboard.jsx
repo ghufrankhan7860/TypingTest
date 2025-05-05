@@ -7,24 +7,34 @@ import { wordChecker } from "../utils/helper";
 import { keyChars } from "../utils/config";
 
 const KeyBoard = () => {
-    const { lastKey, setLastKey, isCorrectKey } = useContext(LastKeyContext);
+    const { lastKey, setLastKey, isCorrectKey, setcorrectKey } =
+        useContext(LastKeyContext);
 
     const { text, setText } = useContext(TextContext);
     const { isRunning } = useContext(TimerContext);
     const { score, setScore } = useContext(ScoreContext);
 
-    const correct = " text-lg bg-green-200 text-green-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1 light:bg-green-200 dark:bg-green-200 dark:text-green-800";
+    const correct =
+        " text-lg bg-green-200 text-green-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1 light:bg-green-200 dark:bg-green-200 dark:text-green-800";
 
     const incorrect =
         " text-lg bg-custom-red-300 text-custom-red-800 px-3 py-1 rounded-sm hover:text-custom-red-800 hover:border-0 m-1";
+
+    const crcctkey =
+        "bg-green-300 dark:bg-green-500 light:bg-green-500 text-green-800";
+    const incrtkey =
+        "bg-red-300 dark:bg-red-200 dark:text-red-800 light:bg-red-200 text-red-800";
+
     const getButtonClass = (btn) => {
-        let btnClass = "";
+        let btnClass = " ";
 
         if (btn === lastKey) {
-            btnClass += isCorrectKey ? correct : incorrect;
+            btnClass += isCorrectKey ? crcctkey : incrtkey;
+            console.log("lastKey", lastKey);
+            console.log("isCorrectKey", isCorrectKey);
         }
         if (lastKey === " " && btn === "space") {
-            btnClass += isCorrectKey ? correct : incorrect;
+            btnClass += isCorrectKey ? crcctkey : incrtkey;
         }
 
         return btnClass;
@@ -41,7 +51,6 @@ const KeyBoard = () => {
             score,
             setScore
         );
-
         setcorrectKey(check);
     };
 
@@ -52,8 +61,8 @@ const KeyBoard = () => {
                     return (
                         <button
                             className={
-                                getButtonClass(row) +
-                                " text-lg font-bold px-10 py-1 bg-white text-bittersweet rounded-sm hover:text-custom-red-800 hover:border-0 m-1 [@media(max-width:700px)]:px-20 [@media(max-width:700px)]:py-1 dark:bg-neutral-600 light:bg-neutral-200 light:text-neutral-600 dark:text-neutral-50 "
+                                " text-lg font-bold px-10 py-1 bg-white text-bittersweet rounded-sm hover:text-custom-red-800 hover:border-0 m-1 [@media(max-width:700px)]:px-20 [@media(max-width:700px)]:py-1 dark:bg-neutral-600 light:bg-neutral-200 light:text-neutral-600 dark:text-neutral-50 " +
+                                getButtonClass(row)
                             }
                             key={"space-row" + index}
                             onClick={() => {

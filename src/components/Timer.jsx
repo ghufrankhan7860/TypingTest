@@ -93,12 +93,17 @@ const Timer = () => {
         setIsCorrectKey(null);
     };
 
+    // get active button class for timer buttons
     const getActiveBtn = (id) => {
-        return timeId === id ? "text-custom-red-300" : "";
+        return timeId === id
+            ? "text-custom-red-300 light:text-neutral-600 dark:text-white"
+            : "";
     };
 
     const getActivBtnClass = (btn) => {
-        return btn ? "text-custom-red-300" : "";
+        return btn
+            ? "text-custom-red-300 light:text-neutral-600 dark:text-white"
+            : "";
     };
 
     const handleCustomInputClick = () => {
