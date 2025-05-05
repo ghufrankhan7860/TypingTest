@@ -37,7 +37,7 @@ const CustomInput = ({ setIsCustomVisible }) => {
             <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4xl bg-custom-red-150 h-3/4 z-50 rounded-lg shadow-lg [@media(max-width:400px)]:w-90 [@media(max-width:400px)]:h-3/5">
                 <div className="flex flex-col h-full p-4 gap-1 ">
                     <button
-                        className="ml-auto text-gray-700 hover:text-custom-red-800 px-3 py-1 text-lg bg-custom-red-300 text-white rounded-md m-1 text-center"
+                        className="ml-auto text-gray-700 hover:text-custom-red-800 px-3 py-1 text-lg bg-custom-red-300 text-white rounded-md m-1 text-center cursor-pointer"
                         onClick={handleXbtn}
                     >
                         x

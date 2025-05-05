@@ -3,6 +3,7 @@ import { TimerContext } from "../contexts/TimerContext";
 import TextContext from "../contexts/TextContext";
 import { timeButtons } from "../utils/config";
 
+import { CiTimer } from "react-icons/ci";
 import timeIcon from "/assets/images/time.png";
 
 import { resetTimer } from "../utils/helper";
@@ -64,7 +65,7 @@ const Timer = () => {
             setIsRunning(false);
             clearInterval(interval.current);
         } else {
-            setIsRunning(true);
+            if (timeLeft > 0) setIsRunning(true);
         }
 
         // Remove focus from the button after clicking
@@ -106,17 +107,16 @@ const Timer = () => {
 
     return (
         <>
-            {console.log("Re-rendered" + isCustomText)}
             {isCustomVisible && (
                 <CustomInput setIsCustomVisible={setIsCustomVisible} />
             )}
             {console.log(isCustomText)}
             <div className="flex flex-col items-center justify-center">
                 {/* Punctuation  */}
-                <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1 sm:text-s[@media(max-width:768px)]:flex-col [@media(max-width:768px)]:gap-1 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:py-2">
+                <div className="flex flex-row flex-wrap justify-center items-center gap-2 bg-custom-red-150 rounded-lg px-8 py-1 sm:text-s[@media(max-width:768px)]:flex-col [@media(max-width:768px)]:gap-1 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:py-2 dark:bg-neutral-700 light:bg-neutral-200">
                     <button
                         className={
-                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
+                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-400 dark:text-neutral-500 light:text-neutral-400 hover:light:text-neutral-600 hover:dark:text-neutral-50  " +
                             getActivBtnClass(isPunctuation)
                         }
                         onClick={() => {
@@ -139,14 +139,14 @@ const Timer = () => {
                         @ punctuation
                     </button>
 
-                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
+                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800 light:text-neutral-400 dark:text-neutral-500 ">
                         |
                     </div>
 
                     {/* Numbers  */}
                     <button
                         className={
-                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
+                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-400 dark:text-neutral-500 light:text-neutral-400 hover:light:text-neutral-600 hover:dark:text-neutral-50 " +
                             getActivBtnClass(isNumbers)
                         }
                         onClick={() => {
@@ -168,27 +168,27 @@ const Timer = () => {
                         # numbers
                     </button>
 
-                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
+                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800 light:text-neutral-400 dark:text-neutral-500 ">
                         |
                     </div>
 
                     {/* Custom-input */}
                     <button
                         className={
-                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-800 " +
+                            "flex flex-row items-center text-lg font-bold text-custom-red-200 font-[montserrat] font-medium hover:text-custom-red-400 dark:text-neutral-500 light:text-neutral-400 hover:light:text-neutral-600 hover:dark:text-neutral-50 " +
                             getActivBtnClass(isCustomText)
                         }
                         onClick={handleCustomInputClick}
                     >
                         custom-input
                     </button>
-                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
+                    <div className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800 light:text-neutral-400 dark:text-neutral-500 ">
                         |
                     </div>
 
                     {/* timer bar */}
-                    <div className="flex flex-row items-center text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:text-custom-red-800">
-                        <img src={timeIcon} alt="timer" className="w-6 h-6" />
+                    <div className="flex flex-row items-center text-lg font-bold text-custom-red-300 font-[montserrat] font-medium hover:light:text-neutral-700 light:text-neutral-600 dark:text-neutral-50 ">
+                        <CiTimer />
                         time
                     </div>
                     <div className="flex flex-row flex-wrap gap-3">
@@ -199,7 +199,7 @@ const Timer = () => {
                                     onBtnPress(button.time, button.id)
                                 }
                                 className={
-                                    "text-lg font-bold text-custom-red-200 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800 " +
+                                    "text-lg font-bold text-custom-red-200 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-400 light:text-neutral-400 dark:text-neutral-500  hover:light:bg-neutral-400 hover:light:text-neutral-800 hover:dark:bg-neutral-50 hover:dark:text-neutral-700 " +
                                     getActiveBtn(button.id)
                                 }
                             >
@@ -209,14 +209,14 @@ const Timer = () => {
                     </div>
                 </div>
 
-                <div className="text-4xl p-2 font-[montserrat] font-medium text-custom-red-300">
+                <div className="text-4xl p-2 font-[montserrat] font-medium text-custom-red-300 dark:text-neutral-50 light:text-neutral-600">
                     {formatTime(timeLeft)}
                 </div>
                 <div className="flex flex-row flex-wrap gap-3">
                     <button
                         ref={buttonRef}
                         onClick={handleClick}
-                        className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800 w-[70px]"
+                        className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-600 w-[70px] dark:text-neutral-500 light:text-neutral-400 hover:light:bg-neutral-400 hover:light:text-neutral-800 hover:dark:bg-neutral-50 hover:dark:text-neutral-700"
                     >
                         {isRunning ? "Stop " : "Start"}
                     </button>
@@ -234,7 +234,7 @@ const Timer = () => {
                                 null
                             )
                         }
-                        className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-800"
+                        className="text-lg font-bold text-custom-red-300 font-[montserrat] font-medium px-2 rounded-lg hover:bg-custom-red-200 hover:text-custom-red-600 w-[70px] dark:text-neutral-500 light:text-neutral-400 hover:light:bg-neutral-400 hover:light:text-neutral-800 hover:dark:bg-neutral-50 hover:dark:text-neutral-700"
                     >
                         Reset
                     </button>

@@ -14,8 +14,8 @@ const DisplayText = () => {
 
     if (wordsArray.length === 0) {
         return (
-            <div className=" flex flex-col justify-center items-center text-3xl font-light p-2 m-2 bg-custom-red-100 h-44 w-6xl rounded-lg">
-                <div className="w-full h-30 bg-custom-red-150 rounded-xl animate-pulse"></div>
+            <div className=" flex flex-col justify-center items-center text-3xl font-light p-2 m-2 bg-custom-red-100 h-44 w-6xl rounded-lg dark:text-neutral-50 light:text-neutral-600">
+                <div className="w-full h-30 bg-custom-red-150 rounded-xl animate-pulse dark:text-neutral-50 light:text-neutral-600"></div>
             </div>
         );
     }
@@ -23,11 +23,11 @@ const DisplayText = () => {
     return (
         <div className="flex justify-center items-center h-32 sm:h-36 md:h-40 lg:h-48 relative w-full [@media(max-width:700px)]:h-36 ">
             <pre className="h-auto w-full overflow-hidden whitespace-pre-wrap px-2">
-                <code className="text-2xl sm:text-3xl md:text-4xl font-bold text-custom-red-300 font-mono font-medium relative [@media(max-height:640px)]:text-4xl [@media(max-width:700px)]:text-3xl">
-                    <span className="absolute animate-blink text-bittersweet font-black">
+                <code className="text-2xl sm:text-3xl md:text-4xl font-bold text-custom-red-300 font-mono font-medium relative [@media(max-height:640px)]:text-4xl [@media(max-width:700px)]:text-3xl dark:text-neutral-50 light:text-neutral-600">
+                    <span className="absolute animate-blink text-bittersweet font-black  dark:text-neutral-50 light:text-neutral-600">
                         _
                     </span>
-                    <span className="relative overflow-hidden w-full inline-block truncate">
+                    <span className="relative overflow-hidden w-full inline-block truncate  dark:text-neutral-50 light:text-neutral-600 ">
                         {wordsArray.map((word, index) => (
                             <span key={index}>
                                 <span>{word}</span>

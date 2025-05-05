@@ -21,10 +21,10 @@ const Score = () => {
     };
     return (
         <div className="flex flex-row gap-2 mt-2 p-2 items-baseline [@media(max-width:700px)]:mt-0">
-            <span className="text-7xl text-custom-red-300 font-indie-flower font-bold [@media(max-width:700px)]:text-6xl ">
+            <span className="text-7xl text-custom-red-300 font-indie-flower font-bold [@media(max-width:700px)]:text-6xl dark:text-neutral-50 light:text-neutral-600 ">
                 {score === 0 || score === Infinity ? "0" : calculateScore()}
             </span>
-            <span className="text-xl font-[arial] font-bold text-bittersweet">
+            <span className="text-xl font-[arial] font-bold text-bittersweet dark:text-neutral-500 light:text-neutral-400">
                 WPM
             </span>
         </div>
