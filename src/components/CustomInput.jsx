@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
+import { useRef, useContext, useEffect } from "react";
 import TextContext from "../contexts/TextContext";
 import CustomTextContext from "../contexts/CustomTextContext";
 
 const CustomInput = ({ setIsCustomVisible }) => {
     const { customText, setCustomText } = useContext(CustomTextContext);
+    const textareaRef = useRef(null);
 
     const {
         setText,
@@ -29,8 +30,14 @@ const CustomInput = ({ setIsCustomVisible }) => {
         setIsPunctuation(false);
         setIsNumbers(false);
         setIsCustomText(true);
-        console.log(isCustomText);
+        // console.log(isCustomText);
     };
+
+    useEffect(() => {
+        if (textareaRef.current) {
+            textareaRef.current.focus();
+        }
+    }, []);
 
     return (
         <>
@@ -44,7 +51,8 @@ const CustomInput = ({ setIsCustomVisible }) => {
                         x
                     </button>
                     <textarea
-                        className="w-full border-1 border-custom-red-300  mx-auto h-full p-3 rounded-md bg-custom-red-100 focus:outline-0 wrap-break-word [@media(max-width:400px)]:w-full dark:bg-neutral-700 dark:border-black dark:text-white light:bg-neutral-100 light:text-black light:border-neutral-800"
+                        ref={textareaRef}
+                        className="resize-none w-full border-1 border-custom-red-300  mx-auto h-full p-3 rounded-md bg-custom-red-100 focus:outline-0 wrap-break-word [@media(max-width:400px)]:w-full dark:bg-neutral-700 dark:border-black dark:text-white light:bg-neutral-100 light:text-black light:border-neutral-800"
                         type="text-box"
                         value={customText}
                         onChange={handleOnChange}
