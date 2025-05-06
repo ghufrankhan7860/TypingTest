@@ -7,26 +7,36 @@ import { wordChecker } from "../utils/helper";
 import { keyChars } from "../utils/config";
 
 const KeyBoard = () => {
-    const { lastKey, setLastKey, isCorrectKey, setcorrectKey } =
+    const { lastKey, setLastKey, isCorrectKey, setIsCorrectKey } =
         useContext(LastKeyContext);
 
     const { text, setText } = useContext(TextContext);
     const { isRunning } = useContext(TimerContext);
     const { score, setScore } = useContext(ScoreContext);
 
-    const crcctkey =
-        "bg-green-300 dark:bg-green-500 dark:text-green-800 light:bg-green-200 text-green-800";
-    const incrtkey =
-        "bg-red-300 dark:bg-red-200 dark:text-red-800 light:bg-red-200 text-red-800";
-
     const getButtonClass = (btn) => {
-        let btnClass = " ";
+        // Base styling for ALL keys
+        let btnClass = "";
+        let otherBtns =
+            "p-3 m-1 rounded-sm [@media(max-width:700px)]:sm [@media(max-width:700px)]:px-[11px] [@media(max-width:700px)]:py-2.5 [@media(max-width:700px)]:mx-0.5 [@media(max-width:700px)]:my-2 ";
+        let spaceBtn =
+            "p-2 px-15 m-1 rounded-sm [@media(max-width:700px)]:sm [@media(max-width:700px)]:px-[11px] [@media(max-width:700px)]:py-2.5 [@media(max-width:700px)]:mx-0.5 [@media(max-width:700px)]:my-2 [@media(max-width:700px)]:w-1/2 ";
 
-        if (btn === lastKey) {
-            btnClass += isCorrectKey ? crcctkey : incrtkey;
-        }
-        if (lastKey === " " && btn === "space") {
-            btnClass += isCorrectKey ? crcctkey : incrtkey;
+        if (btn === lastKey || (lastKey === " " && btn === "space")) {
+            // Only change background and text colors, not sizing
+            btnClass += isCorrectKey
+                ? (btn === "space" ? spaceBtn : otherBtns) +
+                  "bg-green-300 dark:bg-green-500 dark:text-green-800 light:bg-green-200 text-green-800"
+                : (btn === "space" ? spaceBtn : otherBtns) +
+                  "bg-red-300 dark:bg-red-200 dark:text-red-800 light:bg-red-200 text-red-800";
+        } else {
+            btn === "space"
+                ? (btnClass +=
+                      spaceBtn +
+                      "bg-custom-red-200 text-custom-red-100 hover:text-custom-red-800 light:bg-neutral-500 dark:bg-neutral-50 dark:text-neutral-600 light:text-neutral-50")
+                : (btnClass +=
+                      otherBtns +
+                      "bg-custom-red-200 text-custom-red-100 hover:text-custom-red-800 light:bg-neutral-500 dark:bg-neutral-50 dark:text-neutral-600 light:text-neutral-50");
         }
 
         return btnClass;
@@ -43,18 +53,17 @@ const KeyBoard = () => {
             score,
             setScore
         );
-        setcorrectKey(check);
+        setIsCorrectKey(check);
     };
 
     return (
-        // console.log("lastKey", lastKey),
         <div className="flex flex-col justify-center items-center border-1 border-custom-red-200 rounded-sm [@media(max-height:680px)]:hidden  [@media(max-width:700px)]:h-64 [@media(max-width:700px)]:w-full [@media(min-width:700px)]:p-3 dark:border-neutral-50 light:border-neutral-600">
             {keyChars.map((row, index) => {
                 if (row == "space") {
                     return (
                         <button
                             className={
-                                " text-lg font-bold px-10 py-1 bg-white text-bittersweet rounded-sm hover:text-custom-red-800 hover:border-0 m-1 [@media(max-width:700px)]:px-20 [@media(max-width:700px)]:py-1 dark:bg-neutral-600 light:bg-neutral-200 light:text-neutral-600 dark:text-neutral-50 " +
+                                " px-15 [@media(max-width:1100px)]:px " +
                                 getButtonClass(row)
                             }
                             key={"space-row" + index}
@@ -75,10 +84,7 @@ const KeyBoard = () => {
                         {row.map((char, idx) => {
                             return (
                                 <button
-                                    className={
-                                        " text-lg font-bold px-3 py-1 bg-custom-red-200 text-custom-red-100 rounded-sm hover:text-custom-red-800 hover:border-0 m-1 [@media(max-width:700px)]:text-md [@media(max-width:700px)]:px-[11px] [@media(max-width:700px)]:py-2.5 [@media(max-width:700px)]:mx-0.5 [@media(max-width:700px)]:my-2 light:bg-neutral-500 dark:bg-neutral-50 dark:text-neutral-600 light:text-neutral-50 " +
-                                        getButtonClass(char)
-                                    }
+                                    className={getButtonClass(char)}
                                     key={char + idx}
                                     onClick={() => handleClick(char)}
                                 >

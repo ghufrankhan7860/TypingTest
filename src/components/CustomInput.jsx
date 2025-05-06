@@ -30,7 +30,6 @@ const CustomInput = ({ setIsCustomVisible }) => {
         setIsPunctuation(false);
         setIsNumbers(false);
         setIsCustomText(true);
-        // console.log(isCustomText);
     };
 
     useEffect(() => {

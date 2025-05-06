@@ -4,7 +4,6 @@ const ThemeContext = createContext();
 
 // dark, light , colorful
 export const ThemeContextProvider = ({ children }) => {
-    const themeCyle = ["light", "dark", ""];
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem("theme") || "light";
     });
